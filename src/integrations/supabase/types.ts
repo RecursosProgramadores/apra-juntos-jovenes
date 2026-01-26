@@ -14,13 +14,174 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      admin_settings: {
+        Row: {
+          created_at: string | null
+          id: string
+          key: string
+          updated_at: string | null
+          value: Json | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          key: string
+          updated_at?: string | null
+          value?: Json | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          key?: string
+          updated_at?: string | null
+          value?: Json | null
+        }
+        Relationships: []
+      }
+      eventos: {
+        Row: {
+          created_at: string | null
+          date: string
+          description: string | null
+          id: string
+          image_url: string | null
+          is_featured: boolean | null
+          is_published: boolean | null
+          location: string | null
+          social_links: Json | null
+          time: string | null
+          title: string
+          type: string | null
+          updated_at: string | null
+          video_url: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          date: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          is_featured?: boolean | null
+          is_published?: boolean | null
+          location?: string | null
+          social_links?: Json | null
+          time?: string | null
+          title: string
+          type?: string | null
+          updated_at?: string | null
+          video_url?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          date?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          is_featured?: boolean | null
+          is_published?: boolean | null
+          location?: string | null
+          social_links?: Json | null
+          time?: string | null
+          title?: string
+          type?: string | null
+          updated_at?: string | null
+          video_url?: string | null
+        }
+        Relationships: []
+      }
+      noticias: {
+        Row: {
+          category: string | null
+          content: string | null
+          created_at: string | null
+          excerpt: string | null
+          gallery_images: Json | null
+          id: string
+          image_url: string | null
+          is_published: boolean | null
+          publish_date: string | null
+          social_links: Json | null
+          title: string
+          updated_at: string | null
+          video_url: string | null
+        }
+        Insert: {
+          category?: string | null
+          content?: string | null
+          created_at?: string | null
+          excerpt?: string | null
+          gallery_images?: Json | null
+          id?: string
+          image_url?: string | null
+          is_published?: boolean | null
+          publish_date?: string | null
+          social_links?: Json | null
+          title: string
+          updated_at?: string | null
+          video_url?: string | null
+        }
+        Update: {
+          category?: string | null
+          content?: string | null
+          created_at?: string | null
+          excerpt?: string | null
+          gallery_images?: Json | null
+          id?: string
+          image_url?: string | null
+          is_published?: boolean | null
+          publish_date?: string | null
+          social_links?: Json | null
+          title?: string
+          updated_at?: string | null
+          video_url?: string | null
+        }
+        Relationships: []
+      }
+      social_links: {
+        Row: {
+          created_at: string | null
+          display_order: number | null
+          followers_count: string | null
+          icon: string | null
+          id: string
+          is_active: boolean | null
+          platform: string
+          updated_at: string | null
+          url: string
+          username: string
+        }
+        Insert: {
+          created_at?: string | null
+          display_order?: number | null
+          followers_count?: string | null
+          icon?: string | null
+          id?: string
+          is_active?: boolean | null
+          platform: string
+          updated_at?: string | null
+          url: string
+          username: string
+        }
+        Update: {
+          created_at?: string | null
+          display_order?: number | null
+          followers_count?: string | null
+          icon?: string | null
+          id?: string
+          is_active?: boolean | null
+          platform?: string
+          updated_at?: string | null
+          url?: string
+          username?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_admin: { Args: never; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
