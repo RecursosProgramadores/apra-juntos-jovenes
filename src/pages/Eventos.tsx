@@ -1,68 +1,82 @@
+import { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
-import { ArrowRight, Calendar, Clock, MapPin, Users, Video } from "lucide-react";
+import { ArrowRight, Calendar, Clock, MapPin, Users, Video, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { supabase } from "@/integrations/supabase/client";
+import { format } from "date-fns";
+import { es } from "date-fns/locale";
 
-const events = [
-  {
-    id: 1,
-    title: "Gran Mitin de Cierre - Lima",
-    date: "10 Mar 2025",
-    time: "4:00 PM",
-    location: "Estadio Nacional, Lima",
-    type: "Mitin",
-    description: "El evento más grande de la campaña. Únete a miles de peruanos comprometidos con el cambio.",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Caravana de la Victoria - Arequipa",
-    date: "28 Feb 2025",
-    time: "10:00 AM",
-    location: "Plaza de Armas, Arequipa",
-    type: "Caravana",
-    description: "Recorrido por las principales calles de la Ciudad Blanca con actividades y música.",
-  },
-  {
-    id: 3,
-    title: "Webinar: Propuestas para la Juventud",
-    date: "25 Feb 2025",
-    time: "7:00 PM",
-    location: "Virtual - Zoom",
-    type: "Virtual",
-    description: "Jheremy presenta su plan integral para empoderar a los jóvenes peruanos.",
-  },
-  {
-    id: 4,
-    title: "Mitin Juvenil - Lima Norte",
-    date: "20 Feb 2025",
-    time: "5:00 PM",
-    location: "Plaza Cívica, Los Olivos",
-    type: "Mitin",
-    description: "Encuentro con jóvenes líderes de Lima Norte para dialogar sobre sus propuestas.",
-  },
-  {
-    id: 5,
-    title: "Debate Universitario - UNMSM",
-    date: "18 Feb 2025",
-    time: "11:00 AM",
-    location: "Auditorio Principal, UNMSM",
-    type: "Debate",
-    description: "Debate abierto con estudiantes sobre educación, empleo y futuro del país.",
-  },
-  {
-    id: 6,
-    title: "Caravana del Norte - Trujillo",
-    date: "15 Feb 2025",
-    time: "9:00 AM",
-    location: "Plaza de Armas, Trujillo",
-    type: "Caravana",
-    description: "Inicio de la gran caravana que recorrerá todo el norte del Perú.",
-  },
-];
+interface Evento {
+  id: string;
+  title: string;
+  date: string;
+  time: string | null;
+  location: string | null;
+  type: string | null;
+  description: string | null;
+  image_url: string | null;
+  video_url: string | null;
+  is_featured: boolean | null;
+}
 
 const Eventos = () => {
+  const [eventos, setEventos] = useState<Evento[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchEventos();
+
+    // Subscribe to realtime updates
+    const channel = supabase
+      .channel('eventos-public')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'eventos' },
+        () => {
+          fetchEventos();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  const fetchEventos = async () => {
+    const today = new Date().toISOString().split('T')[0];
+    const { data, error } = await supabase
+      .from('eventos')
+      .select('*')
+      .eq('is_published', true)
+      .gte('date', today)
+      .order('date', { ascending: true });
+
+    if (!error && data) {
+      setEventos(data);
+    }
+    setIsLoading(false);
+  };
+
+  const formatDate = (dateStr: string) => {
+    return format(new Date(dateStr), "d MMM yyyy", { locale: es });
+  };
+
+  const featuredEvent = eventos.find(e => e.is_featured);
+  const regularEvents = eventos.filter(e => !e.is_featured);
+
+  if (isLoading) {
+    return (
+      <Layout>
+        <div className="min-h-screen flex items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+      </Layout>
+    );
+  }
+
   return (
     <Layout>
       {/* Hero */}
@@ -84,32 +98,36 @@ const Eventos = () => {
       </section>
 
       {/* Featured Event */}
-      {events.filter(e => e.featured).map((event) => (
-        <section key={event.id} className="py-12 bg-primary">
+      {featuredEvent && (
+        <section className="py-12 bg-primary">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <Badge className="bg-primary-foreground/20 text-primary-foreground mb-4">
                 ⭐ Evento Destacado
               </Badge>
               <h2 className="text-3xl md:text-4xl font-black text-primary-foreground mb-4">
-                {event.title}
+                {featuredEvent.title}
               </h2>
               <p className="text-lg text-primary-foreground/80 mb-6">
-                {event.description}
+                {featuredEvent.description}
               </p>
               <div className="flex flex-wrap gap-6 mb-6 text-primary-foreground/80">
                 <div className="flex items-center gap-2">
                   <Calendar className="h-5 w-5" />
-                  <span>{event.date}</span>
+                  <span>{formatDate(featuredEvent.date)}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="h-5 w-5" />
-                  <span>{event.time}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-5 w-5" />
-                  <span>{event.location}</span>
-                </div>
+                {featuredEvent.time && (
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-5 w-5" />
+                    <span>{featuredEvent.time}</span>
+                  </div>
+                )}
+                {featuredEvent.location && (
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-5 w-5" />
+                    <span>{featuredEvent.location}</span>
+                  </div>
+                )}
               </div>
               <Button 
                 size="lg" 
@@ -121,7 +139,7 @@ const Eventos = () => {
             </div>
           </div>
         </section>
-      ))}
+      )}
 
       {/* Events List */}
       <section className="py-16 bg-background">
@@ -130,51 +148,62 @@ const Eventos = () => {
             Próximos <span className="text-primary">Eventos</span>
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {events.filter(e => !e.featured).map((event) => (
-              <article
-                key={event.id}
-                className="bg-card rounded-2xl border p-6 hover:border-primary transition-all card-hover"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <Badge 
-                    variant="secondary" 
-                    className={`
-                      ${event.type === "Mitin" ? "bg-primary/10 text-primary" : ""}
-                      ${event.type === "Caravana" ? "bg-orange-100 text-orange-600" : ""}
-                      ${event.type === "Virtual" ? "bg-blue-100 text-blue-600" : ""}
-                      ${event.type === "Debate" ? "bg-purple-100 text-purple-600" : ""}
-                    `}
-                  >
-                    {event.type === "Virtual" && <Video className="h-3 w-3 mr-1" />}
-                    {event.type === "Mitin" && <Users className="h-3 w-3 mr-1" />}
-                    {event.type}
-                  </Badge>
-                </div>
-                
-                <h3 className="text-xl font-bold mb-2">{event.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                  {event.description}
-                </p>
-                
-                <div className="space-y-2 text-sm text-muted-foreground mb-6">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4 text-primary" />
-                    <span>{event.date} • {event.time}</span>
+          {regularEvents.length === 0 && !featuredEvent ? (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground text-lg">
+                No hay eventos próximos programados. ¡Vuelve pronto!
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {regularEvents.map((event) => (
+                <article
+                  key={event.id}
+                  className="bg-card rounded-2xl border p-6 hover:border-primary transition-all card-hover"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <Badge 
+                      variant="secondary" 
+                      className={`
+                        ${event.type === "Mitin" ? "bg-primary/10 text-primary" : ""}
+                        ${event.type === "Caravana" ? "bg-orange-100 text-orange-600" : ""}
+                        ${event.type === "Virtual" || event.type === "Webinar" ? "bg-blue-100 text-blue-600" : ""}
+                        ${event.type === "Debate" ? "bg-purple-100 text-purple-600" : ""}
+                        ${!["Mitin", "Caravana", "Virtual", "Webinar", "Debate"].includes(event.type || "") ? "bg-muted text-muted-foreground" : ""}
+                      `}
+                    >
+                      {(event.type === "Virtual" || event.type === "Webinar") && <Video className="h-3 w-3 mr-1" />}
+                      {event.type === "Mitin" && <Users className="h-3 w-3 mr-1" />}
+                      {event.type || "Evento"}
+                    </Badge>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-primary" />
-                    <span>{event.location}</span>
+                  
+                  <h3 className="text-xl font-bold mb-2">{event.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                    {event.description}
+                  </p>
+                  
+                  <div className="space-y-2 text-sm text-muted-foreground mb-6">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4 text-primary" />
+                      <span>{formatDate(event.date)} {event.time && `• ${event.time}`}</span>
+                    </div>
+                    {event.location && (
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-4 w-4 text-primary" />
+                        <span>{event.location}</span>
+                      </div>
+                    )}
                   </div>
-                </div>
-                
-                <Button variant="outline" className="w-full">
-                  Más información
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </article>
-            ))}
-          </div>
+                  
+                  <Button variant="outline" className="w-full">
+                    Más información
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </article>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
