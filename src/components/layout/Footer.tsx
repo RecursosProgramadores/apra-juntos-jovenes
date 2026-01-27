@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Star, Mail, Phone, MapPin } from "lucide-react";
+import { Star, Mail, Phone, MapPin, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -215,7 +215,7 @@ export const Footer = () => {
             <p className="text-sm text-background/50 text-center md:text-left">
               © 2025 APRA - Alianza Popular Revolucionaria Americana. Todos los derechos reservados.
             </p>
-            <div className="flex gap-6">
+            <div className="flex items-center gap-6">
               {footerLinks.legal.map((link) => (
                 <Link
                   key={link.href}
@@ -225,6 +225,13 @@ export const Footer = () => {
                   {link.label}
                 </Link>
               ))}
+              <Link
+                to="/admin-login"
+                className="flex items-center gap-1 text-sm text-background/30 hover:text-primary transition-colors"
+              >
+                <Shield className="h-3 w-3" />
+                Admin
+              </Link>
             </div>
           </div>
         </div>
