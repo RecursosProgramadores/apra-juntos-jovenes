@@ -60,8 +60,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const signIn = async (email: string, password: string) => {
     try {
-      // Only allow admin email
-      if (email !== ADMIN_EMAIL) {
+      // Only allow admin email (case-insensitive)
+      if (email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
         return { error: new Error("Acceso denegado. Solo el administrador puede iniciar sesión.") };
       }
 
@@ -82,8 +82,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const signUp = async (email: string, password: string) => {
     try {
-      // Only allow admin email to sign up
-      if (email !== ADMIN_EMAIL) {
+      // Only allow admin email to sign up (case-insensitive)
+      if (email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
         return { error: new Error("Registro no permitido para este email.") };
       }
 
