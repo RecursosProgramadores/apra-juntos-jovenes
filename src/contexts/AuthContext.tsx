@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-const ADMIN_EMAIL = "apracampaña@gmail.com";
+const ADMIN_EMAIL = "jorgediputado2026H@gmail.com";
 
 interface AuthContextType {
   user: User | null;
