@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
+import NoticiaModal from "@/components/noticias/NoticiaModal";
 
 interface Noticia {
   id: string;
@@ -14,7 +15,9 @@ interface Noticia {
   content: string | null;
   category: string | null;
   image_url: string | null;
+  video_url: string | null;
   publish_date: string | null;
+  gallery_images: unknown;
 }
 
 const categories = ["Todos", "Educación", "Campaña", "Propuestas", "Eventos", "Medio Ambiente", "General"];
@@ -23,6 +26,8 @@ const Noticias = () => {
   const [noticias, setNoticias] = useState<Noticia[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("Todos");
+  const [selectedNoticia, setSelectedNoticia] = useState<Noticia | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     fetchNoticias();
@@ -60,6 +65,11 @@ const Noticias = () => {
   const formatDate = (dateStr: string | null) => {
     if (!dateStr) return "";
     return format(new Date(dateStr), "d MMM yyyy", { locale: es });
+  };
+
+  const handleReadMore = (noticia: Noticia) => {
+    setSelectedNoticia(noticia);
+    setModalOpen(true);
   };
 
   const filteredNoticias = selectedCategory === "Todos" 
@@ -154,7 +164,11 @@ const Noticias = () => {
                     <p className="text-muted-foreground mb-4 line-clamp-2">
                       {article.excerpt || article.content?.slice(0, 150)}
                     </p>
-                    <Button variant="link" className="p-0 h-auto text-primary">
+                    <Button 
+                      variant="link" 
+                      className="p-0 h-auto text-primary"
+                      onClick={() => handleReadMore(article)}
+                    >
                       Leer más
                       <ArrowRight className="h-4 w-4" />
                     </Button>
@@ -175,6 +189,13 @@ const Noticias = () => {
           <SocialLinks />
         </div>
       </section>
+
+      {/* Noticia Modal */}
+      <NoticiaModal 
+        noticia={selectedNoticia} 
+        open={modalOpen} 
+        onOpenChange={setModalOpen} 
+      />
     </Layout>
   );
 };
