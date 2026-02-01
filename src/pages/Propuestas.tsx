@@ -1,8 +1,8 @@
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
-import { 
-  GraduationCap, Heart, TrendingUp, Leaf, Users, Shield, 
-  ArrowRight, CheckCircle2 
+import {
+  GraduationCap, Heart, TrendingUp, Leaf, Users, Shield,
+  ArrowRight, CheckCircle2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -10,102 +10,71 @@ import educationImg from "@/assets/education.jpg";
 import healthcareImg from "@/assets/healthcare.jpg";
 import economyImg from "@/assets/economy.jpg";
 import environmentImg from "@/assets/environment.jpg";
+import turismoImg from "@/assets/turismo.jpg";
+import pymesImg from "@/assets/pymes.jpg";
+import seguridadImg from "@/assets/seguridad.jpg";
+
 
 const proposals = [
   {
-    id: "educacion",
-    title: "Educación de Calidad",
-    subtitle: "Invertir en el futuro de nuestros jóvenes",
-    icon: GraduationCap,
-    image: educationImg,
-    description: "Transformaremos el sistema educativo peruano para garantizar que cada niño y joven tenga acceso a una educación de primer nivel.",
-    points: [
-      "Laptops y tablets para todos los estudiantes de escuelas públicas",
-      "Conectividad de internet en todas las instituciones educativas",
-      "Programa de becas integrales para educación superior",
-      "Reforma curricular enfocada en habilidades del siglo XXI",
-      "Capacitación continua y mejores salarios para docentes",
-      "Construcción y modernización de infraestructura escolar",
-    ],
-  },
-  {
-    id: "salud",
-    title: "Salud para Todos",
-    subtitle: "Un sistema de salud que proteja a cada peruano",
+    id: "salud-infra",
+    title: "Salud e Infraestructura Médica",
+    subtitle: "Modernización y Acceso",
     icon: Heart,
     image: healthcareImg,
-    description: "Fortaleceremos el sistema de salud pública para garantizar atención médica de calidad, accesible y oportuna para todos.",
+    description: "Nivel de atención superior y protección social para todos los sectores de la sociedad.",
     points: [
-      "Hospitales modernos en todas las regiones del país",
-      "Medicamentos esenciales gratuitos para poblaciones vulnerables",
-      "Programa nacional de prevención de enfermedades crónicas",
-      "Salud mental como prioridad nacional",
-      "Telemedicina para zonas rurales y de difícil acceso",
-      "Mejores condiciones laborales para profesionales de la salud",
+      "Promover la construcción del Hospital IV EsSalud Huánuco y el Hospital II EsSalud de Tingo María.",
+      "Promover bajo una ley la autonomía administrativa, política y económica de EsSalud del Perú.",
+      "Seguro para los transportistas, artistas y periodistas en EsSalud con una ley especial.",
     ],
   },
   {
-    id: "economia",
-    title: "Economía Inclusiva",
-    subtitle: "Oportunidades económicas para todos",
+    id: "desarrollo-vial",
+    title: "Corredores Viales y Conectividad",
+    subtitle: "Huánuco Conectado al Mundo",
     icon: TrendingUp,
     image: economyImg,
-    description: "Crearemos una economía que funcione para todos, con énfasis en el empleo juvenil y el apoyo a emprendedores.",
+    description: "Infraestructura vial estratégica para dinamizar el comercio nacional e internacional.",
     points: [
-      "Programa de primer empleo con incentivos para empresas",
-      "Créditos blandos y capacitación para emprendedores",
-      "Formalización de la economía con beneficios reales",
-      "Reforma tributaria progresiva y justa",
-      "Desarrollo de industrias estratégicas y tecnología",
-      "Protección y dignificación del trabajo informal",
+      "Promover una ley regional para un Corredor Vial Central de Pasco a Tingo María (Autopista).",
+      "Promover una ley nacional para un Corredor Central Puerto Chancay a Brasil que pase por la región Huánuco.",
     ],
   },
   {
-    id: "ambiente",
-    title: "Medio Ambiente",
-    subtitle: "Perú sostenible para las futuras generaciones",
+    id: "agro-turismo",
+    title: "Agroindustrial y Turismo",
+    subtitle: "Productividad y Riqueza",
     icon: Leaf,
-    image: environmentImg,
-    description: "Protegeremos nuestros recursos naturales mientras impulsamos un desarrollo económico sostenible y responsable.",
+    image: turismoImg,
+    description: "Leyes especiales para potenciar nuestras ventajas competitivas naturales.",
     points: [
-      "Protección efectiva de la Amazonía y áreas naturales",
-      "Transición hacia energías renovables",
-      "Programa de ciudades verdes y movilidad sostenible",
-      "Gestión integral de residuos sólidos",
-      "Lucha contra la minería ilegal y la deforestación",
-      "Educación ambiental en todos los niveles",
+      "Sacar Ley Especial para el Turismo en la región de Huánuco.",
+      "Sacar Ley Especial para el Agro y Agroindustrial para exportación de productos agrícolas.",
     ],
   },
   {
-    id: "juventud",
-    title: "Juventud Empoderada",
-    subtitle: "Los jóvenes como protagonistas del cambio",
+    id: "creditos-pymes",
+    title: "Economía y Trabajo",
+    subtitle: "Motor del Desarrollo",
     icon: Users,
-    image: educationImg,
-    description: "Los jóvenes son el presente y el futuro del Perú. Crearemos programas que les permitan desarrollar todo su potencial.",
+    image: pymesImg,
+    description: "Facilidades financieras y justicia laboral para el crecimiento integral.",
     points: [
-      "Centros de innovación y tecnología en cada región",
-      "Programa de emprendimiento juvenil con financiamiento",
-      "Espacios de participación política y ciudadana",
-      "Programas deportivos y culturales gratuitos",
-      "Lucha contra la violencia y el acoso juvenil",
-      "Salud mental y bienestar para jóvenes",
+      "Sacar Ley Regional para Créditos Agrarios y Micro Empresas (PYMES): Pequeña, Mediana y la Gran Empresa.",
+      "Elaborar y proponer un Código Laboral para todos los trabajadores del Perú.",
     ],
   },
   {
-    id: "anticorrupcion",
-    title: "Cero Corrupción",
-    subtitle: "Transparencia y rendición de cuentas",
+    id: "seguridad",
+    title: "Seguridad Ciudadana",
+    subtitle: "Paz y Tranquilidad",
     icon: Shield,
-    image: economyImg,
-    description: "Acabaremos con la corrupción que tanto daño ha hecho al país, con reformas estructurales y tolerancia cero.",
+    image: seguridadImg,
+    description: "Tecnología y patrullaje para garantizar la tranquilidad de las familias huanuqueñas.",
     points: [
-      "Gobierno digital y datos abiertos para todos",
-      "Fiscalización ciudadana de gastos públicos",
-      "Reforma del sistema de justicia independiente",
-      "Protección efectiva a denunciantes de corrupción",
-      "Inhabilitación perpetua para funcionarios corruptos",
-      "Transparencia en financiamiento de campañas",
+      "Potenciaremos el patrullaje integrado con drones y vigilancia inteligente.",
+      "Centros de monitoreo modernos y leyes más severas contra la delincuencia.",
     ],
   },
 ];
@@ -118,14 +87,15 @@ const Propuestas = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm mb-6">
-              PLAN DE GOBIERNO
+              PLAN REGIONAL HUÁNUCO
             </span>
-            <h1 className="text-4xl md:text-6xl font-black text-foreground mb-6">
-              Propuestas para un <span className="text-primary">Perú Mejor</span>
+            <h1 className="text-4xl md:text-6xl font-black text-foreground mb-6 leading-tight">
+              PROPUESTAS REGIONALES <br />
+              <span className="text-primary">JORGE ALVARADO LINO</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Un plan integral y realizable para transformar cada aspecto de nuestra sociedad. 
-              Propuestas concretas con metas medibles.
+              Nuestras propuestas reales para transformar Huánuco. Compromisos firmes con la salud,
+              la infraestructura y el desarrollo económico de nuestra región.
             </p>
           </div>
         </div>
@@ -139,9 +109,8 @@ const Propuestas = () => {
               <div
                 key={proposal.id}
                 id={proposal.id}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                  }`}
               >
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                   <div className="relative rounded-2xl overflow-hidden shadow-xl">
@@ -196,8 +165,8 @@ const Propuestas = () => {
                   ¿Cómo se financiarán estas propuestas?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  Mediante una reforma tributaria justa, eliminación del gasto superfluo, 
-                  lucha frontal contra la corrupción y la evasión fiscal, y una gestión 
+                  Mediante una reforma tributaria justa, eliminación del gasto superfluo,
+                  lucha frontal contra la corrupción y la evasión fiscal, y una gestión
                   eficiente de los recursos del Estado.
                 </AccordionContent>
               </AccordionItem>
@@ -206,8 +175,8 @@ const Propuestas = () => {
                   ¿Cuál es el plazo para implementar estas reformas?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  Cada propuesta tiene metas a corto plazo (primer año), mediano plazo 
-                  (3 años) y largo plazo (5 años). Publicaremos informes de avance 
+                  Cada propuesta tiene metas a corto plazo (primer año), mediano plazo
+                  (3 años) y largo plazo (5 años). Publicaremos informes de avance
                   trimestrales para garantizar transparencia.
                 </AccordionContent>
               </AccordionItem>
@@ -216,8 +185,8 @@ const Propuestas = () => {
                   ¿Cómo puedo participar en la elaboración de propuestas?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  Organizamos mesas de diálogo en todas las regiones y tenemos 
-                  canales digitales para recibir propuestas ciudadanas. Tu voz es 
+                  Organizamos mesas de diálogo en todas las regiones y tenemos
+                  canales digitales para recibir propuestas ciudadanas. Tu voz es
                   fundamental para construir el plan de gobierno.
                 </AccordionContent>
               </AccordionItem>
@@ -233,11 +202,11 @@ const Propuestas = () => {
             ¿Tienes Ideas para Mejorar el Perú?
           </h2>
           <p className="text-xl text-primary-foreground/80 mb-8 max-w-xl mx-auto">
-            Queremos escucharte. Envíanos tus propuestas y juntos construyamos 
+            Queremos escucharte. Envíanos tus propuestas y juntos construyamos
             el plan de gobierno que el Perú necesita.
           </p>
-          <Button 
-            size="xl" 
+          <Button
+            size="xl"
             className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
             asChild
           >

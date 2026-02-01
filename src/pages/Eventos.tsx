@@ -90,7 +90,7 @@ const Eventos = () => {
               Eventos de <span className="text-primary">Campaña</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Participa en nuestros eventos y sé parte del movimiento que 
+              Participa en nuestros eventos y sé parte del movimiento que
               transformará el Perú. ¡Te esperamos!
             </p>
           </div>
@@ -129,8 +129,8 @@ const Eventos = () => {
                   </div>
                 )}
               </div>
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
               >
                 Confirmar Asistencia
@@ -147,11 +147,11 @@ const Eventos = () => {
           <h2 className="text-3xl md:text-4xl font-black text-center mb-12">
             Próximos <span className="text-primary">Eventos</span>
           </h2>
-          
+
           {regularEvents.length === 0 && !featuredEvent ? (
             <div className="text-center py-12">
-              <p className="text-muted-foreground text-lg">
-                No hay eventos próximos programados. ¡Vuelve pronto!
+              <p className="text-muted-foreground text-lg italic">
+                Aún no hay eventos registrados. ¡Vuelve pronto!
               </p>
             </div>
           ) : (
@@ -162,8 +162,8 @@ const Eventos = () => {
                   className="bg-card rounded-2xl border p-6 hover:border-primary transition-all card-hover"
                 >
                   <div className="flex items-start justify-between mb-4">
-                    <Badge 
-                      variant="secondary" 
+                    <Badge
+                      variant="secondary"
                       className={`
                         ${event.type === "Mitin" ? "bg-primary/10 text-primary" : ""}
                         ${event.type === "Caravana" ? "bg-orange-100 text-orange-600" : ""}
@@ -177,12 +177,12 @@ const Eventos = () => {
                       {event.type || "Evento"}
                     </Badge>
                   </div>
-                  
+
                   <h3 className="text-xl font-bold mb-2">{event.title}</h3>
                   <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
                     {event.description}
                   </p>
-                  
+
                   <div className="space-y-2 text-sm text-muted-foreground mb-6">
                     <div className="flex items-center gap-2">
                       <Calendar className="h-4 w-4 text-primary" />
@@ -195,7 +195,7 @@ const Eventos = () => {
                       </div>
                     )}
                   </div>
-                  
+
                   <Button variant="outline" className="w-full">
                     Más información
                     <ArrowRight className="h-4 w-4" />
@@ -207,32 +207,7 @@ const Eventos = () => {
         </div>
       </section>
 
-      {/* Calendar Integration */}
-      <section className="py-16 bg-secondary">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-black mb-6">
-            Añade los Eventos a tu <span className="text-primary">Calendario</span>
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-            No te pierdas ningún evento. Sincroniza nuestra agenda con tu 
-            calendario personal.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="outline" size="lg">
-              <Calendar className="h-5 w-5 mr-2" />
-              Google Calendar
-            </Button>
-            <Button variant="outline" size="lg">
-              <Calendar className="h-5 w-5 mr-2" />
-              Apple Calendar
-            </Button>
-            <Button variant="outline" size="lg">
-              <Calendar className="h-5 w-5 mr-2" />
-              Outlook
-            </Button>
-          </div>
-        </div>
-      </section>
+
 
       {/* CTA */}
       <section className="py-16 bg-foreground">
@@ -241,7 +216,7 @@ const Eventos = () => {
             ¿Quieres Organizar un Evento?
           </h2>
           <p className="text-lg text-background/70 mb-8 max-w-xl mx-auto">
-            Si deseas organizar un evento de campaña en tu comunidad, 
+            Si deseas organizar un evento de campaña en tu comunidad,
             contáctanos y te ayudaremos.
           </p>
           <Button variant="hero" size="xl" asChild>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import candidateImg from "@/assets/candidate-jheremy.jpg";
+import candidateImg from "@/assets/fotoportadaalvaro.png";
 
 export const CandidateSection = () => {
   return (
@@ -15,15 +15,15 @@ export const CandidateSection = () => {
               <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
                 <img
                   src={candidateImg}
-                  alt="Jheremy - Candidato APRA"
+                  alt="Jorge Alvarado Lino - Candidato APRA"
                   className="w-full aspect-[3/4] object-cover"
                 />
               </div>
-              
+
               {/* Decorative Elements */}
               <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/20 rounded-full blur-2xl" />
               <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-primary/30 rounded-full blur-3xl" />
-              
+
               {/* Quote Card */}
               <div className="absolute -bottom-8 -right-4 md:right-8 bg-card rounded-2xl p-6 shadow-xl max-w-xs z-20 border">
                 <Quote className="h-8 w-8 text-primary mb-2" />
@@ -31,7 +31,7 @@ export const CandidateSection = () => {
                   "El Perú que soñamos se construye con la fuerza de nuestra juventud."
                 </p>
                 <p className="text-xs text-muted-foreground mt-2 font-bold">
-                  — Jheremy
+                  — Jorge Alvarado Lino
                 </p>
               </div>
             </div>
@@ -42,9 +42,9 @@ export const CandidateSection = () => {
             <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm mb-6">
               CONOCE AL CANDIDATO
             </span>
-            
+
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
-              Jheremy
+              Jorge Alvarado Lino
               <span className="block text-2xl md:text-3xl font-bold text-primary mt-2">
                 Candidato Principal del APRA
               </span>
@@ -52,17 +52,17 @@ export const CandidateSection = () => {
 
             <div className="space-y-4 text-lg text-muted-foreground mb-8">
               <p>
-                Nacido en Lima, con una trayectoria dedicada al servicio público 
-                y la defensa de los derechos de los jóvenes peruanos. 
+                Nacido en Lima, con una trayectoria dedicada al servicio público
+                y la defensa de los derechos de los jóvenes peruanos.
               </p>
               <p>
-                Desde muy joven, Jheremy se involucró en el activismo social, 
-                liderando iniciativas para mejorar la educación y las oportunidades 
+                Desde muy joven, Jorge Alvarado Lino se involucró en el activismo social,
+                liderando iniciativas para mejorar la educación y las oportunidades
                 laborales en las comunidades más necesitadas.
               </p>
               <p>
-                Con formación en política pública y experiencia en gobierno local, 
-                representa una nueva generación de líderes comprometidos con 
+                Con formación en política pública y experiencia en gobierno local,
+                representa una nueva generación de líderes comprometidos con
                 la transformación del Perú.
               </p>
             </div>

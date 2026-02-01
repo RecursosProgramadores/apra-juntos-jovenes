@@ -2,7 +2,7 @@ import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { ArrowRight, Quote, MapPin, Briefcase, GraduationCap, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import candidateImg from "@/assets/candidate-jheremy.jpg";
+import candidateImg from "@/assets/fotoportadaalvaro.png";
 
 const achievements = [
   {
@@ -39,14 +39,14 @@ const Candidato = () => {
                 CANDIDATO APRA 2026
               </span>
               <h1 className="text-4xl md:text-6xl font-black text-foreground mb-4">
-                Jheremy
+                Jorge Alvarado Lino
               </h1>
               <p className="text-2xl text-primary font-bold mb-6">
                 El líder que el Perú necesita
               </p>
               <p className="text-lg text-muted-foreground mb-8">
-                Con visión de futuro y compromiso inquebrantable con el pueblo peruano, 
-                Jheremy representa una nueva generación de liderazgo político basado en 
+                Con visión de futuro y compromiso inquebrantable con el pueblo peruano,
+                Jorge Alvarado Lino representa una nueva generación de liderazgo político basado en
                 la transparencia, la innovación y la justicia social.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -65,7 +65,7 @@ const Candidato = () => {
               <div className="rounded-3xl overflow-hidden shadow-2xl">
                 <img
                   src={candidateImg}
-                  alt="Jheremy - Candidato APRA"
+                  alt="Jorge Alvarado Lino - Candidato APRA"
                   className="w-full aspect-[3/4] object-cover"
                 />
               </div>
@@ -89,21 +89,21 @@ const Candidato = () => {
             </h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-muted-foreground mb-6">
-                Nacido en Lima, en el corazón de un barrio trabajador, Jheremy creció 
-                entendiendo desde temprana edad los desafíos que enfrentan las familias 
-                peruanas. Esta experiencia moldeó su vocación de servicio y su 
+                Nacido en Lima, en el corazón de un barrio trabajador, Jorge Alvarado Lino creció
+                entendiendo desde temprana edad los desafíos que enfrentan las familias
+                peruanas. Esta experiencia moldeó su vocación de servicio y su
                 compromiso inquebrantable con la justicia social.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                Desde joven, se involucró en el activismo estudiantil y comunitario, 
-                liderando iniciativas para mejorar la educación pública y crear 
-                oportunidades para los jóvenes de su comunidad. Su trabajo incansable 
+                Desde joven, se involucró en el activismo estudiantil y comunitario,
+                liderando iniciativas para mejorar la educación pública y crear
+                oportunidades para los jóvenes de su comunidad. Su trabajo incansable
                 lo llevó a ser reconocido como líder juvenil a nivel nacional.
               </p>
               <p className="text-lg text-muted-foreground">
-                Con formación en políticas públicas y una década de experiencia en 
-                gestión gubernamental, Jheremy ha demostrado que es posible gobernar 
-                con transparencia, eficiencia y cercanía al pueblo. Ahora, busca 
+                Con formación en políticas públicas y una década de experiencia en
+                gestión gubernamental, Jorge Alvarado Lino ha demostrado que es posible gobernar
+                con transparencia, eficiencia y cercanía al pueblo. Ahora, busca
                 llevar esta visión a todo el Perú.
               </p>
             </div>
@@ -143,8 +143,8 @@ const Candidato = () => {
             Únete a nuestra campaña y sé parte de la transformación que el Perú necesita.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button 
-              size="xl" 
+            <Button
+              size="xl"
               className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
               asChild
             >

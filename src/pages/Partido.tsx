@@ -27,7 +27,7 @@ const timelineEvents = [
   {
     year: "2024",
     title: "Renovación Generacional",
-    description: "Nueva generación de líderes como Jheremy impulsan la modernización del partido hacia el 2026.",
+    description: "Nueva generación de líderes como Jorge Alvarado Lino impulsan la modernización del partido hacia el 2026.",
   },
 ];
 
@@ -68,7 +68,7 @@ const Partido = () => {
               100 Años de <span className="text-primary">Lucha</span> por el Perú
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Desde 1924, el APRA ha sido protagonista de la historia política peruana, 
+              Desde 1924, el APRA ha sido protagonista de la historia política peruana,
               defendiendo los derechos del pueblo y la justicia social.
             </p>
           </div>
@@ -83,7 +83,7 @@ const Partido = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <div 
+              <div
                 key={index}
                 className="p-6 rounded-2xl bg-card border hover:border-primary transition-colors card-hover"
               >
@@ -135,8 +135,8 @@ const Partido = () => {
           <p className="text-xl text-primary-foreground/80 mb-8 max-w-xl mx-auto">
             Únete al partido que ha transformado el Perú y sigue luchando por un futuro mejor.
           </p>
-          <Button 
-            size="xl" 
+          <Button
+            size="xl"
             className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
             asChild
           >

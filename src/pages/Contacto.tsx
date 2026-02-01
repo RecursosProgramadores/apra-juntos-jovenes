@@ -9,7 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 
 const Contacto = () => {
   const { toast } = useToast();
-  const [formType, setFormType] = useState<"contact" | "volunteer" | "donate">("contact");
+  const [formType, setFormType] = useState<"contact" | "volunteer">("contact");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,177 +32,51 @@ const Contacto = () => {
               <span className="text-primary">Contáctanos</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Queremos escucharte. Ya sea que quieras ser voluntario, hacer una 
-              donación o simplemente saludarnos, estamos aquí para ti.
+              Queremos escucharte. Ya sea que quieras ser voluntario
+              o simplemente saludarnos, estamos aquí para ti.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Form Tabs */}
+      {/* Form Section */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            {/* Tabs */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <Button
-                variant={formType === "contact" ? "default" : "outline"}
-                size="lg"
-                onClick={() => setFormType("contact")}
-                className="gap-2"
-              >
-                <Mail className="h-5 w-5" />
-                Contacto
-              </Button>
-              <Button
-                variant={formType === "volunteer" ? "default" : "outline"}
-                size="lg"
-                onClick={() => setFormType("volunteer")}
-                className="gap-2"
-              >
-                <Users className="h-5 w-5" />
-                Ser Voluntario
-              </Button>
-              <Button
-                variant={formType === "donate" ? "default" : "outline"}
-                size="lg"
-                onClick={() => setFormType("donate")}
-                className="gap-2"
-              >
-                <Heart className="h-5 w-5" />
-                Donar
-              </Button>
-            </div>
-
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
               {/* Form */}
               <div className="lg:col-span-3">
                 <div className="bg-card rounded-2xl border p-8">
-                  {formType === "contact" && (
-                    <>
-                      <h2 className="text-2xl font-bold mb-6">Envíanos un mensaje</h2>
-                      <form onSubmit={handleSubmit} className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="space-y-2">
-                            <Label htmlFor="name">Nombre completo</Label>
-                            <Input id="name" placeholder="Tu nombre" required />
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="email">Correo electrónico</Label>
-                            <Input id="email" type="email" placeholder="tu@email.com" required />
-                          </div>
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="subject">Asunto</Label>
-                          <Input id="subject" placeholder="¿Sobre qué quieres hablar?" required />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="message">Mensaje</Label>
-                          <Textarea 
-                            id="message" 
-                            placeholder="Escribe tu mensaje aquí..." 
-                            rows={5}
-                            required 
-                          />
-                        </div>
-                        <Button type="submit" variant="hero" size="lg" className="w-full">
-                          Enviar Mensaje
-                          <Send className="h-5 w-5" />
-                        </Button>
-                      </form>
-                    </>
-                  )}
-
-                  {formType === "volunteer" && (
-                    <>
-                      <h2 className="text-2xl font-bold mb-2">Sé Voluntario</h2>
-                      <p className="text-muted-foreground mb-6">
-                        Únete a nuestro equipo y ayuda a construir el cambio que el Perú necesita.
-                      </p>
-                      <form onSubmit={handleSubmit} className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="space-y-2">
-                            <Label htmlFor="vol-name">Nombre completo</Label>
-                            <Input id="vol-name" placeholder="Tu nombre" required />
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="vol-email">Correo electrónico</Label>
-                            <Input id="vol-email" type="email" placeholder="tu@email.com" required />
-                          </div>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="space-y-2">
-                            <Label htmlFor="vol-phone">Teléfono</Label>
-                            <Input id="vol-phone" placeholder="+51 999 999 999" required />
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="vol-region">Región</Label>
-                            <Input id="vol-region" placeholder="Tu región" required />
-                          </div>
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="vol-skills">¿Cómo puedes ayudar?</Label>
-                          <Textarea 
-                            id="vol-skills" 
-                            placeholder="Cuéntanos tus habilidades e intereses..." 
-                            rows={4}
-                            required 
-                          />
-                        </div>
-                        <Button type="submit" variant="hero" size="lg" className="w-full">
-                          Quiero ser Voluntario
-                          <Users className="h-5 w-5" />
-                        </Button>
-                      </form>
-                    </>
-                  )}
-
-                  {formType === "donate" && (
-                    <>
-                      <h2 className="text-2xl font-bold mb-2">Apoya la Campaña</h2>
-                      <p className="text-muted-foreground mb-6">
-                        Tu donación nos ayuda a llevar nuestro mensaje a todos los rincones del Perú.
-                      </p>
-                      <div className="grid grid-cols-3 gap-4 mb-6">
-                        {[20, 50, 100].map((amount) => (
-                          <Button 
-                            key={amount}
-                            variant="outline" 
-                            className="h-16 text-xl font-bold hover:bg-primary hover:text-primary-foreground"
-                          >
-                            S/{amount}
-                          </Button>
-                        ))}
+                  <h2 className="text-2xl font-bold mb-6">Envíanos un mensaje</h2>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="name">Nombre completo</Label>
+                        <Input id="name" placeholder="Tu nombre" required />
                       </div>
-                      <form onSubmit={handleSubmit} className="space-y-6">
-                        <div className="space-y-2">
-                          <Label htmlFor="don-amount">Otro monto (S/)</Label>
-                          <Input id="don-amount" type="number" placeholder="Ingresa un monto" />
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="space-y-2">
-                            <Label htmlFor="don-name">Nombre completo</Label>
-                            <Input id="don-name" placeholder="Tu nombre" required />
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="don-email">Correo electrónico</Label>
-                            <Input id="don-email" type="email" placeholder="tu@email.com" required />
-                          </div>
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="don-dni">DNI</Label>
-                          <Input id="don-dni" placeholder="Tu DNI" required />
-                        </div>
-                        <Button type="submit" variant="hero" size="lg" className="w-full">
-                          Donar Ahora
-                          <Heart className="h-5 w-5" />
-                        </Button>
-                        <p className="text-xs text-muted-foreground text-center">
-                          Todas las donaciones son transparentes y reportadas a la ONPE.
-                        </p>
-                      </form>
-                    </>
-                  )}
+                      <div className="space-y-2">
+                        <Label htmlFor="email">Correo electrónico</Label>
+                        <Input id="email" type="email" placeholder="tu@email.com" required />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="subject">Asunto</Label>
+                      <Input id="subject" placeholder="¿Sobre qué quieres hablar?" required />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Mensaje</Label>
+                      <Textarea
+                        id="message"
+                        placeholder="Escribe tu mensaje aquí..."
+                        rows={5}
+                        required
+                      />
+                    </div>
+                    <Button type="submit" variant="hero" size="lg" className="w-full">
+                      Enviar Mensaje
+                      <Send className="h-5 w-5" />
+                    </Button>
+                  </form>
                 </div>
               </div>
 
@@ -218,7 +92,7 @@ const Contacto = () => {
                       <div>
                         <p className="font-medium">Dirección</p>
                         <p className="text-sm text-muted-foreground">
-                          Av. Alfonso Ugarte 1012, Lima, Perú
+                          jr. 28 de julio Nº 1068 - frente del banco de la nación
                         </p>
                       </div>
                     </div>
@@ -240,7 +114,7 @@ const Contacto = () => {
                       <div>
                         <p className="font-medium">Email</p>
                         <p className="text-sm text-muted-foreground">
-                          contacto@apra.pe
+                          contacto@jorgealvarado-diputado.com
                         </p>
                       </div>
                     </div>
@@ -250,11 +124,11 @@ const Contacto = () => {
                 <div className="bg-primary rounded-2xl p-6 text-primary-foreground">
                   <h3 className="text-xl font-bold mb-2">¿Preguntas?</h3>
                   <p className="text-primary-foreground/80 mb-4">
-                    Nuestro equipo está disponible para responder todas tus 
+                    Nuestro equipo está disponible para responder todas tus
                     consultas de lunes a viernes de 9am a 6pm.
                   </p>
-                  <Button 
-                    variant="secondary" 
+                  <Button
+                    variant="secondary"
                     className="w-full"
                     onClick={() => window.open('https://wa.me/5114267770', '_blank')}
                   >
@@ -262,14 +136,17 @@ const Contacto = () => {
                   </Button>
                 </div>
 
-                {/* Map placeholder */}
-                <div className="bg-muted rounded-2xl h-48 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
-                    <p className="text-sm text-muted-foreground">
-                      Mapa de ubicación
-                    </p>
-                  </div>
+                <div className="bg-card rounded-2xl border overflow-hidden h-64">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!3m2!1ses!2spe!4v1769969382529!5m2!1ses!2spe!6m8!1m7!1svPvA87tK1UWkg5Q058Mq3Q!2m2!1d-9.928791398874294!2d-76.2385972194766!3f115.40989987872548!4f-5.79908001133613!5f0.7820865974627469"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Mapa de ubicación"
+                  />
                 </div>
               </div>
             </div>

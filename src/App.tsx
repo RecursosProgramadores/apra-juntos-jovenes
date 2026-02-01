@@ -12,6 +12,10 @@ import Propuestas from "./pages/Propuestas";
 import Noticias from "./pages/Noticias";
 import Eventos from "./pages/Eventos";
 import Contacto from "./pages/Contacto";
+import Privacidad from "./pages/Privacidad";
+import Terminos from "./pages/Terminos";
+import Transparencia from "./pages/Transparencia";
+import ScrollToTop from "./components/layout/ScrollToTop";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -31,6 +35,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <AuthProvider>
           <Routes>
             {/* Public Routes */}
@@ -41,10 +46,13 @@ const App = () => (
             <Route path="/noticias" element={<Noticias />} />
             <Route path="/eventos" element={<Eventos />} />
             <Route path="/contacto" element={<Contacto />} />
-            
+            <Route path="/privacidad" element={<Privacidad />} />
+            <Route path="/terminos" element={<Terminos />} />
+            <Route path="/transparencia" element={<Transparencia />} />
+
             {/* Admin Login (not protected) */}
             <Route path="/admin-login" element={<AdminLogin />} />
-            
+
             {/* Protected Admin Routes */}
             <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
             <Route path="/admin/eventos" element={<ProtectedRoute><AdminEventos /></ProtectedRoute>} />
@@ -56,7 +64,7 @@ const App = () => (
             <Route path="/admin/multimedia" element={<ProtectedRoute><AdminMultimedia /></ProtectedRoute>} />
             <Route path="/admin/redes-sociales" element={<ProtectedRoute><AdminRedesSociales /></ProtectedRoute>} />
             <Route path="/admin/configuracion" element={<ProtectedRoute><AdminConfiguracion /></ProtectedRoute>} />
-            
+
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

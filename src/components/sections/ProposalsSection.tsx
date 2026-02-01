@@ -1,96 +1,87 @@
 import { Link } from "react-router-dom";
-import { 
-  GraduationCap, 
-  Heart, 
-  TrendingUp, 
-  Leaf, 
-  Users, 
+import {
+  GraduationCap,
+  Heart,
+  TrendingUp,
+  Leaf,
+  Users,
   Shield,
-  ArrowRight
+  ArrowRight,
+  Star
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import educationImg from "@/assets/education.jpg";
 import healthcareImg from "@/assets/healthcare.jpg";
 import economyImg from "@/assets/economy.jpg";
 import environmentImg from "@/assets/environment.jpg";
+import turismoImg from "@/assets/turismo.jpg";
+import pymesImg from "@/assets/pymes.jpg";
+import seguridadImg from "@/assets/seguridad.jpg";
 
 const proposals = [
   {
-    id: "educacion",
-    title: "Educación",
-    subtitle: "Futuro para todos",
-    description: "Acceso universal a educación de calidad, tecnología en cada aula y becas para jóvenes talentosos.",
-    icon: GraduationCap,
-    image: educationImg,
-    points: [
-      "Laptops para cada estudiante",
-      "Becas integrales",
-      "Reforma curricular moderna",
-    ],
-  },
-  {
-    id: "salud",
-    title: "Salud",
-    subtitle: "Bienestar garantizado",
-    description: "Sistema de salud público fortalecido con acceso para todos los peruanos sin excepción.",
+    id: "salud-infra",
+    title: "Salud e Infraestructura",
+    subtitle: "Hospitales para Huánuco",
+    description: "Prioridad en la construcción de infraestructura médica de alta complejidad para la región y autonomía de EsSalud.",
     icon: Heart,
     image: healthcareImg,
     points: [
-      "Hospitales modernos",
-      "Medicinas accesibles",
-      "Prevención de enfermedades",
+      "Hospital IV EsSalud Huánuco y Hospital II Tingo María",
+      "Autonomía Administrativa, Política y Económica de EsSalud",
+      "Seguro para transportistas, artistas y periodistas",
     ],
   },
   {
-    id: "economia",
-    title: "Economía",
-    subtitle: "Oportunidades reales",
-    description: "Empleo juvenil, apoyo a emprendedores y una economía que funcione para todos.",
+    id: "desarrollo-vial",
+    title: "Vial y Conectividad",
+    subtitle: "Corredores Estratégicos",
+    description: "Impulso a grandes proyectos viales para conectar Huánuco con el desarrollo nacional e internacional.",
     icon: TrendingUp,
     image: economyImg,
     points: [
-      "Empleo digno para jóvenes",
-      "Créditos para MYPES",
-      "Reforma tributaria justa",
+      "Autopista Pasco a Tingo María",
+      "Corredor Puerto Chancay a Brasil",
+      "Corredor Central por Huánuco",
     ],
   },
   {
-    id: "ambiente",
-    title: "Medio Ambiente",
-    subtitle: "Perú sostenible",
-    description: "Protección de la Amazonía, energías renovables y desarrollo sostenible.",
+    id: "agro-turismo",
+    title: "Agro y Turismo",
+    subtitle: "Potencia Exportadora",
+    description: "Leyes especiales para potenciar el campo huanuqueño y facilitar la exportación de nuestros productos.",
     icon: Leaf,
-    image: environmentImg,
+    image: turismoImg,
     points: [
-      "Protección de bosques",
-      "Energía limpia",
-      "Ciudades verdes",
+      "Ley Especial de Turismo en la Región de Huánuco",
+      "Ley Especial para el Agro y Agroindustrial de exportación",
+      "Créditos agrarios regionales",
     ],
   },
   {
-    id: "juventud",
-    title: "Juventud",
-    subtitle: "El poder del cambio",
-    description: "Programas de empoderamiento, innovación tecnológica y lucha contra la desigualdad.",
+    id: "creditos-pymes",
+    title: "PYMES y Créditos",
+    subtitle: "Apoyo al Emprendedor",
+    description: "Facilidades financieras y leyes regionales que protejan y fomenten el crecimiento de la pequeña empresa.",
     icon: Users,
-    image: educationImg,
+    image: pymesImg,
     points: [
-      "Centros de innovación",
-      "Programas de emprendimiento",
-      "Participación política",
+      "Ley para Micro, Pequeña, Mediana y Gran Empresa",
+      "Acceso a créditos regionales focalizados",
+      "Código Laboral para todos los trabajadores del Perú",
     ],
   },
   {
-    id: "anticorrupcion",
-    title: "Anti-corrupción",
-    subtitle: "Transparencia total",
-    description: "Reformas institucionales, gobierno abierto y tolerancia cero a la corrupción.",
+    id: "seguridad",
+    title: "Seguridad Ciudadana",
+    subtitle: "Paz y Tranquilidad",
+    description: "Tecnología y patrullaje integrado para garantizar la seguridad de todas las familias huanuqueñas.",
     icon: Shield,
-    image: economyImg,
+    image: seguridadImg,
     points: [
-      "Fiscalización ciudadana",
-      "Gobierno digital",
-      "Justicia independiente",
+      "Patrullaje con drones",
+      "Centros de monitoreo inteligentes",
+      "Leyes contra la delincuencia",
     ],
   },
 ];
@@ -102,14 +93,13 @@ export const ProposalsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm mb-4">
-            NUESTRAS PROPUESTAS
+            PLAN REGIONAL HUÁNUCO
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
-            Un Plan para el <span className="text-primary">Perú</span>
+            PROPUESTAS REGIONALES DEL CANDIDATO A DIPUTADO <span className="text-primary">JORGE ALVARADO LINO</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Propuestas concretas y realizables para transformar nuestro país. 
-            Cada área con acciones claras y medibles.
+            Un compromiso real por el desarrollo integral de Huánuco y el bienestar de cada ciudadano.
           </p>
         </div>
 

@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import japLogo from "@/assets/JAPlogo.png";
 
 const navLinks = [
   { href: "/", label: "Inicio" },
@@ -14,18 +15,13 @@ const navLinks = [
   { href: "/contacto", label: "Contacto" },
 ];
 
-const APRALogo = ({ className }: { className?: string }) => (
+const JAPLogo = ({ className }: { className?: string }) => (
   <div className={cn("flex items-center gap-2", className)}>
-    <div className="relative">
-      <Star className="h-10 w-10 text-primary fill-primary" />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-[8px] font-black text-primary-foreground">APRA</span>
-      </div>
-    </div>
-    <div className="hidden sm:block">
-      <span className="text-xl font-black tracking-tight text-foreground">APRA</span>
-      <span className="block text-[10px] font-medium text-muted-foreground -mt-1">Perú 2026</span>
-    </div>
+    <img
+      src={japLogo}
+      alt="JAP Logo"
+      className="h-12 w-auto md:h-14 lg:h-16 transition-transform hover:scale-105 duration-300"
+    />
   </div>
 );
 
@@ -49,16 +45,16 @@ export const Header = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
         isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-md py-2"
-          : "bg-transparent py-4"
+          ? "bg-background/95 backdrop-blur-md shadow-sm py-2 border-border"
+          : "bg-background py-4 border-transparent"
       )}
     >
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between">
           <Link to="/" className="relative z-10">
-            <APRALogo />
+            <JAPLogo />
           </Link>
 
           {/* Desktop Navigation */}
@@ -68,12 +64,10 @@ export const Header = () => {
                 key={link.href}
                 to={link.href}
                 className={cn(
-                  "px-4 py-2 text-sm font-semibold transition-colors nav-link-underline",
+                  "px-4 py-2 text-sm font-bold uppercase tracking-wide transition-colors nav-link-underline",
                   location.pathname === link.href
                     ? "text-primary"
-                    : isScrolled
-                    ? "text-foreground hover:text-primary"
-                    : "text-foreground/80 hover:text-primary"
+                    : "text-foreground/90 hover:text-primary"
                 )}
               >
                 {link.label}
@@ -83,9 +77,6 @@ export const Header = () => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <Button variant="outline" size="sm" asChild>
-              <Link to="/contacto">Dona Ahora</Link>
-            </Button>
             <Button variant="hero" size="sm" asChild>
               <Link to="/contacto">Únete</Link>
             </Button>
@@ -129,9 +120,6 @@ export const Header = () => {
                 </Link>
               ))}
               <div className="flex flex-col gap-3 mt-6 pt-6 border-t">
-                <Button variant="outline" size="lg" className="w-full" asChild>
-                  <Link to="/contacto">Dona Ahora</Link>
-                </Button>
                 <Button variant="hero" size="lg" className="w-full" asChild>
                   <Link to="/contacto">Únete a la Campaña</Link>
                 </Button>
