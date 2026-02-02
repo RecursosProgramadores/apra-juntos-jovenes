@@ -99,7 +99,7 @@ export const HeroSection = () => {
                 <div className="absolute top-6 right-6 z-30 animate-bounce">
                   <div className="bg-primary text-white w-20 h-20 rounded-xl border-4 border-white flex flex-col items-center justify-center shadow-2xl">
                     <span className="text-[10px] font-black leading-none uppercase">Marca el</span>
-                    <span className="text-4xl font-black leading-none mt-1">4</span>
+                    <span className="text-4xl font-black leading-none mt-1">3</span>
                   </div>
                 </div>
 
@@ -110,7 +110,7 @@ export const HeroSection = () => {
                 />
                 <div className="absolute bottom-6 left-6 z-20">
                   <h3 className="text-3xl font-bold text-white mb-0 hero-text-shadow">Jorge Alvarado</h3>
-                  <span className="text-primary font-black text-sm uppercase tracking-widest">Candidato Presidencial</span>
+                  <span className="text-primary font-black text-sm uppercase tracking-widest">Candidato Diputado</span>
                 </div>
               </div>
 
@@ -145,7 +145,7 @@ export const HeroSection = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-white text-sm font-bold uppercase">Marca el</span>
-                  <div className="bg-white text-primary w-12 h-12 rounded-lg flex items-center justify-center text-2xl font-black">4</div>
+                  <div className="bg-white text-primary w-12 h-12 rounded-lg flex items-center justify-center text-2xl font-black">3</div>
                 </div>
               </div>
             </div>
